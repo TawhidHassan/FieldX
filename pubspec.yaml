@@ -27,6 +27,31 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  json_annotation: ^4.0.0
+  google_fonts:
+  http:
+  dio:
+  logger: ^0.9.1
+  path_provider:
+  image_picker: ^0.6.3+2
+  flutter_bloc: ^7.0.0
+  toast:
+  syncfusion_flutter_charts:
+  lottie:
+  flutter_svg:
+  hydrated_bloc:
+  font_awesome_flutter:
+  syncfusion_flutter_datepicker:
+  shared_preferences:
+  google_maps_flutter: ^0.5.30
+  flutter_polyline_points:
+  location: ^2.3.5
+  geolocator: ^5.1.5
+  geocoder:
+  dropdownfield: 1.0.0
+  carousel_slider: 2.3.4
+  shimmer:
+  searchable_dropdown:
   flutter:
     sdk: flutter
 
@@ -36,6 +61,8 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  build_runner: ^1.11.5
+  json_serializable: ^4.0.2
   flutter_test:
     sdk: flutter
 
