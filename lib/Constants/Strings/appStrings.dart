@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 //base url of api
-const BASE_URL = "https://salesx.herokuapp.com/api/v1/";
+const BASE_URL = "https://demo.fieldx.maacinfo.com/api/";
 
 //route name
 const HOME_PAGE = "/home_page";
