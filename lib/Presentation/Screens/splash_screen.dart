@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+
 
 import 'dart:async';
 import 'package:fieldx/Presentation/Animation/fade_in_animation.dart';
@@ -7,7 +7,7 @@ import 'package:fieldx/Presentation/Page/Login/LoginPage.dart';
 import 'package:fieldx/Presentation/Page/MainScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -25,9 +25,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   Animation<double> _widthAnimation;
   Animation<double> _positionAnimation;
 //storage instance
-  SharedPreferences pref;
   String token;
   bool hideIcon = false;
+  bool isLogin=false;
 
   startTime() async {
     var _duration = new Duration(seconds: 3);
@@ -37,17 +37,28 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   void myPage() {
     _scaleController.forward();
   }
+  void getData() async{
+    var users= await Hive.openBox('users');
+    print("hive "+users.get('token'));
+    if (users.get('token') != null) {
+      setState(() {
+        isLogin=true;
+
+      });
+    } else {
+      setState(() {
+        isLogin=false;
+
+      });
+    }
+  }
 
   @override
   void initState(){
     // TODO: implement initState
-    super.initState();
 
-    SharedPreferences.getInstance().then((prefValue) => {
-      setState(() {
-        token =  prefValue.getString("token");
-      })
-    });
+    super.initState();
+    getData();
     startTime();
     _scaleController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
@@ -92,13 +103,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     Tween<double>(begin: 1.0, end: 32.0).animate(_scale2Controller)
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
+          isLogin?Navigator.pushReplacement(context, PageTransition(MainScreen())):Navigator.pushReplacement(context, PageTransition(LoginPage()));
           getSessionValues();
         }
       });
   }
 
   getSessionValues() async {
-    token!=null?Navigator.pushReplacement(context, PageTransition(MainScreen())) :Navigator.pushReplacement(context, PageTransition(LoginPage()));
+    isLogin?Navigator.pushReplacement(context, PageTransition(MainScreen())):Navigator.pushReplacement(context, PageTransition(LoginPage()));
   }
 
   @override

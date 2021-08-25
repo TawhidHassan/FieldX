@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
 import 'package:fieldx/Presentation/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+
 
 class DrawerScreen extends StatefulWidget {
   @override
@@ -14,19 +15,23 @@ class _DrawerScreenState extends State<DrawerScreen> {
   String name;
   String lastName;
   String email;
+  var users;
   @override
-  void initState() {
+   initState()  {
     // TODO: implement initState
     super.initState();
-    SharedPreferences.getInstance().then((prefValue) => {
-      setState(() {
-        name =  prefValue.getString("name");
-        lastName =  prefValue.getString("lastName");
-        email =  prefValue.getString("email");
-      })
-    });
+    getData();
+    
   }
 
+  void getData() async{
+    users= await Hive.openBox('users');
+    print("hive "+users.get('token'));
+    setState(() {
+      name=users.get('name');
+      lastName=users.get('lastName');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +56,26 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 SizedBox(
                   width: 10,
                 ),
-                Text(
-                  name+" "+lastName+"\n"+email,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
+                Row(
+                  children: [
+                    Text(
+                      name??"",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(width: 2,),
+                    Text(
+                      lastName??"",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                )
+
               ],
             ),
             Column(
@@ -120,9 +138,16 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 SizedBox(
                   width: 10,
                 ),
-                Text(
-                  'Log out',
-                  style: TextStyle(color: Colors.white.withOpacity(0.5)),
+                InkWell(
+                  onTap: () async {
+                    var users= await Hive.openBox('users');
+                    users.clear();
+                    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  },
+                  child: Text(
+                    'Log out',
+                    style: TextStyle(color: Colors.white.withOpacity(0.5)),
+                  ),
                 )
               ],
             )
@@ -131,6 +156,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
       ),
     );
   }
+
+
+
+
 }
 
 class NewRow extends StatelessWidget {
