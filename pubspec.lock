@@ -224,7 +224,7 @@ packages:
       name: dio
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "3.0.10"
   dropdownfield:
     dependency: "direct main"
     description:
@@ -318,7 +318,7 @@ packages:
       name: flutter_polyline_points
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "0.1.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -377,7 +377,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "1.1.2"
   google_maps_flutter:
     dependency: "direct main"
     description:
@@ -426,7 +426,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.3"
+    version: "0.12.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -440,7 +440,7 @@ packages:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "3.1.4"
   hydrated_bloc:
     dependency: "direct main"
     description:
@@ -741,7 +741,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "0.7.9"
   shelf_web_socket:
     dependency: transitive
     description:

@@ -38,8 +38,8 @@ dependencies:
   hive: ^2.0.3
   hive_flutter: ^1.0.0
   timeline_tile: ^0.1.0
-  google_maps_flutter: ^0.5.30
-  flutter_polyline_points:
+  google_maps_flutter: ^0.5.11+1
+  flutter_polyline_points: ^0.1.0
   location: ^2.3.5
   geolocator: ^5.1.5
   geocoder:

@@ -104,9 +104,6 @@ class _LoginPageState extends State<LoginPage> {
                   NormalInputField(controller:emilController ,hintText: "Enter Your Email",icon: Icons.alternate_email,),
                   SizedBox(height: 10,),
                   PasswordTextField(label: "Password",controller: passwordController,),
-                  SizedBox(height: 10,),
-                  NormalInputField(controller:deviceNameController ,hintText: "Enter Your Device Name",icon: Icons.mobile_friendly_sharp,),
-
                   ProgressAnimatedButton(text: "Login",colors: Colors.redAccent,progressButtonState: progressButtonState,tap: (){
                     if (_globalkey.currentState.validate()) {
                       setState(() {
@@ -114,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                         progressButtonState = ButtonState.inProgress;
                       });
                       print(emilController.text);
-                      BlocProvider.of<UserCubit>(context).logIn(emilController.text,passwordController.text,deviceNameController.text);
+                      BlocProvider.of<UserCubit>(context).logIn(emilController.text,passwordController.text,"Hp");
 
                     }
 
