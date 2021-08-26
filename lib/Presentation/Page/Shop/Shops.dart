@@ -1,18 +1,21 @@
-import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Widgets/Card/RouteCard/RouteCard.dart';
+import 'package:fieldx/Presentation/Widgets/Card/ShopCard/ShopCard.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class Routes extends StatefulWidget {
+class Shops extends StatefulWidget {
+  final int shopId;
+
+  const Shops({Key key, this.shopId}) : super(key: key);
   @override
-  _RoutesState createState() => _RoutesState();
+  _ShopsState createState() => _ShopsState();
 }
 
-class _RoutesState extends State<Routes> {
+class _ShopsState extends State<Shops> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Routes"),),
+      appBar: AppBar(title: Text("Shops"),),
       body: Material(
         elevation: 30.0,
         shadowColor: Colors.grey,
@@ -42,14 +45,8 @@ class _RoutesState extends State<Routes> {
                                 Text(("No data found")),
                               ],
                             ),
-                            InkWell(
-                                onTap: (){
-                                   Navigator.pushNamed(context, SHOP_PAGE, arguments: {
-                                     'shopId':1
-                                   });
-                                },
-                                child: RouteCard()),
-                            RouteCard(),
+
+                            ShopCard(),
                           ],
                         )
                   ),

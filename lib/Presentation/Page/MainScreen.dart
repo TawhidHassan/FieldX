@@ -5,6 +5,7 @@ import 'package:fieldx/Presentation/Page/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cuberto_bottom_bar/cuberto_bottom_bar.dart';
 
+import 'Map/MapRoute.dart';
 import 'Route/Routes.dart';
 
 class MainScreen extends StatefulWidget {
@@ -34,11 +35,11 @@ class _MainScreenState extends State<MainScreen>
       getGradient(Colors.deepPurple),
     ));
     tabs.add(
-        Tabs(Icons.search, "Search", Colors.pink, getGradient(Colors.pink)));
+        Tabs(Icons.alt_route, "Route", Colors.pink, getGradient(Colors.pink)));
     tabs.add(
-        Tabs(Icons.alarm, "Alarm", Colors.amber, getGradient(Colors.amber)));
+        Tabs(Icons.map_outlined, "Map", Colors.amber, getGradient(Colors.amber)));
     tabs.add(Tabs(
-        Icons.settings, "Settings", Colors.teal, getGradient(Colors.teal)));
+        Icons.perm_identity, "Profile", Colors.teal, getGradient(Colors.teal)));
     tabBarController = new PageController(initialPage: 0);
   }
 
@@ -51,7 +52,7 @@ class _MainScreenState extends State<MainScreen>
           children: <Widget>[
             HomePage(),
             Routes(),
-            HomeScreen(),
+            RouteMapPage(),
             HomeScreen(),
 
           ]),
