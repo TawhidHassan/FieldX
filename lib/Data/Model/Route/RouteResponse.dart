@@ -8,11 +8,12 @@ part 'RouteResponse.g.dart';
 @JsonSerializable()
 class RouteResponse{
 
-  int current_page;
+  bool success;
+  String message;
   List<Route> data;
 
 
-  RouteResponse(this.current_page, this.data);
+  RouteResponse(this.success, this.message, this.data);
 
   factory RouteResponse.fromJson(Map<String,dynamic>json)=>
       _$RouteResponseFromJson(json);

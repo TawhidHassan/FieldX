@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   }
   void getData() async{
     var users= await Hive.openBox('users');
-    print("hive "+users.get('token'));
+    // print("hive "+users.get('token'));
     if (users.get('token') != null) {
       setState(() {
         isLogin=true;

@@ -6,7 +6,6 @@ part 'Region.g.dart';
 
 @JsonSerializable()
 class Region{
-  @JsonKey(name: "_id")
   int id;
 
   String name;

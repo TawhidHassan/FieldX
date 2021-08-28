@@ -6,7 +6,6 @@ part 'Area.g.dart';
 
 @JsonSerializable()
 class Area{
-  @JsonKey(name: "_id")
   int id;
 
   String name;

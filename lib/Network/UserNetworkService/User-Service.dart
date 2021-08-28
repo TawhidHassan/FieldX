@@ -21,7 +21,7 @@ class UserNetwork {
         },
         body: json.encode(map),
       );
-      logger.d(response.body);
+      // logger.d(response.body);
       return jsonDecode(response.body);
     } catch (e) {
       print(e);

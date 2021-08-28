@@ -15,7 +15,7 @@ class UserCubit extends Cubit<UserState> {
     UserRepository().loginUser(email, password,device).then((value) => {
       logger.d(value),
       if(value['message']!="The given data was invalid."){
-        logger.d(value),
+        // logger.d(value),
         // logger.d(value.token),
         valuex= Login.fromJson(value),
         emit(LoginSuccessful(login: valuex))

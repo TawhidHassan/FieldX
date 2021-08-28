@@ -8,14 +8,14 @@ part of 'Area.dart';
 
 Area _$AreaFromJson(Map<String, dynamic> json) {
   return Area(
-    json['_id'] as int,
+    json['id'] as int,
     json['name'] as String,
     json['organization_id'] as String,
   );
 }
 
 Map<String, dynamic> _$AreaToJson(Area instance) => <String, dynamic>{
-      '_id': instance.id,
+      'id': instance.id,
       'name': instance.name,
       'organization_id': instance.organization_id,
     };

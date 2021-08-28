@@ -6,7 +6,7 @@ part 'Territory.g.dart';
 
 @JsonSerializable()
 class Territory{
-  @JsonKey(name: "_id")
+
   int id;
 
   String name;

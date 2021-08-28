@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:fieldx/Bloc/Route/route_cubit.dart';
 import 'package:fieldx/Bloc/User/user_cubit.dart';
 import 'package:fieldx/Route/app_router.dart';
 // @dart=2.9
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
       providers: [
        BlocProvider<UserCubit>(
           create: (context) => UserCubit(),
+        ),
+        BlocProvider<RouteCubit>(
+          create: (context) => RouteCubit(),
         ),
       ],
       child: MaterialApp(

@@ -8,7 +8,8 @@ part of 'RouteResponse.dart';
 
 RouteResponse _$RouteResponseFromJson(Map<String, dynamic> json) {
   return RouteResponse(
-    json['current_page'] as int,
+    json['success'] as bool,
+    json['message'] as String,
     (json['data'] as List<dynamic>)
         .map((e) => Route.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -17,6 +18,7 @@ RouteResponse _$RouteResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RouteResponseToJson(RouteResponse instance) =>
     <String, dynamic>{
-      'current_page': instance.current_page,
+      'success': instance.success,
+      'message': instance.message,
       'data': instance.data,
     };

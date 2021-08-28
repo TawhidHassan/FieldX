@@ -4,6 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class RouteCard extends StatelessWidget {
+
+  final String name;
+  final String terotori;
+  final String area;
+  final String region;
+  final String sr;
+  final String dp;
+
+  RouteCard(
+      {this.name, this.terotori, this.area, this.region, this.sr, this.dp});
+
   @override
   Widget build(BuildContext context) {
     final  _random = Random();
@@ -49,21 +60,21 @@ class RouteCard extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name xxxxxxx",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w800,fontSize: 22),),
+                      Text(name,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w800,fontSize: 22),),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Gulsanllll",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
-                          Text("Dhakappppp",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
-                          Text("Keraniganjxxx",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text(terotori,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text(area,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text(region,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Sr: Jubair",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text("Sr: "+sr,style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 16),),
                           SizedBox(width: 4,),
-                          Text("Dp: skjsks",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text("Dp: "+dp,style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 16),),
                         ],
                       ),
 

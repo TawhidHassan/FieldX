@@ -11,6 +11,7 @@ import 'package:fieldx/Presentation/Widgets/TextField/NormalTextField.dart';
 import 'package:fieldx/Presentation/Widgets/TextField/PasswordField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 import 'package:lottie/lottie.dart';
 import 'package:progress_button/progress_button.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -74,6 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 progressButtonState = ButtonState.normal;
               });
             }else{
+              Logger().d(data.user.id);
               storeToken(data.token,data.user.id, data.user.first_name, data.user.last_name, data.user.email, data.user.organization_id);
               Navigator.pushReplacement(
                   context,
@@ -110,7 +112,6 @@ class _LoginPageState extends State<LoginPage> {
                         validate = true;
                         progressButtonState = ButtonState.inProgress;
                       });
-                      print(emilController.text);
                       BlocProvider.of<UserCubit>(context).logIn(emilController.text,passwordController.text,"Hp");
 
                     }
@@ -128,6 +129,7 @@ class _LoginPageState extends State<LoginPage> {
 
 
   Future storeToken(String token,int id,String name,String lastName,String email,String orgId) async{
+    print(id);
     users.put("token", token);
     users.put("name", name);
     users.put("lastName", lastName);

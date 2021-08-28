@@ -123,7 +123,6 @@ class _RouteMapPageState extends State<RouteMapPage> {
                 backgroundColor: Colors.blue[700],
                 foregroundColor: Colors.white,
                 onPressed: ()=>{
-
                   getCureentLocation(),
                   googleMapController.animateCamera(
                     CameraUpdate.newCameraPosition(
@@ -186,8 +185,12 @@ class _RouteMapPageState extends State<RouteMapPage> {
   }
 
   void onMapCreated(GoogleMapController controller) {
-    controller.setMapStyle(Utils.mapStyles);
-    _controller.complete(controller);
+    googleMapController=controller;
+    googleMapController.setMapStyle(Utils.mapStyles).whenComplete(() {
+      _controller.complete(controller);
+    });
+
+
   }
 
 }

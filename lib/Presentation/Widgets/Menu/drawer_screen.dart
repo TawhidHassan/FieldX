@@ -26,7 +26,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   void getData() async{
     users= await Hive.openBox('users');
-    print("hive "+users.get('token'));
+    print("hive "+users.get('userId').toString());
     setState(() {
       name=users.get('name');
       lastName=users.get('lastName');

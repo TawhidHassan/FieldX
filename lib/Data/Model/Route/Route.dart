@@ -12,7 +12,6 @@ part 'Route.g.dart';
 
 @JsonSerializable()
 class Route{
-  @JsonKey(name: "_id")
   int id;
 
   String name;

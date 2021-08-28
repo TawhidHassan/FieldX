@@ -8,7 +8,7 @@ part of 'Route.dart';
 
 Route _$RouteFromJson(Map<String, dynamic> json) {
   return Route(
-    json['_id'] as int,
+    json['id'] as int,
     json['name'] as String,
     json['organization_id'] as String,
     Territory.fromJson(json['territory'] as Map<String, dynamic>),
@@ -20,7 +20,7 @@ Route _$RouteFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$RouteToJson(Route instance) => <String, dynamic>{
-      '_id': instance.id,
+      'id': instance.id,
       'name': instance.name,
       'organization_id': instance.organization_id,
       'territory': instance.territory,

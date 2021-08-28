@@ -8,14 +8,14 @@ part of 'Region.dart';
 
 Region _$RegionFromJson(Map<String, dynamic> json) {
   return Region(
-    json['_id'] as int,
+    json['id'] as int,
     json['name'] as String,
     json['organization_id'] as String,
   );
 }
 
 Map<String, dynamic> _$RegionToJson(Region instance) => <String, dynamic>{
-      '_id': instance.id,
+      'id': instance.id,
       'name': instance.name,
       'organization_id': instance.organization_id,
     };
