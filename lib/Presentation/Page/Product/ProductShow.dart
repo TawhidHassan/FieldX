@@ -9,15 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 
-class Products extends StatefulWidget {
-  final int shopId;
-
-  const Products({Key key, this.shopId}) : super(key: key);
+class ProductShow extends StatefulWidget {
   @override
-  _ProductsState createState() => _ProductsState();
+  _ProductShowState createState() => _ProductShowState();
 }
 
-class _ProductsState extends State<Products> {
+class _ProductShowState extends State<ProductShow> {
 
   String token;
   void getData() async{
@@ -41,7 +38,7 @@ class _ProductsState extends State<Products> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Products"),),
+      appBar: AppBar(title: Text("Products List"),),
       body: Material(
         elevation: 30.0,
         shadowColor: Colors.grey,
@@ -84,14 +81,7 @@ class _ProductsState extends State<Products> {
                                     BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                                     children:  data.data.map((data) =>  Container(
                                       margin: EdgeInsets.only(bottom: 14),
-                                      child:  InkWell(
-                                          onTap: (){
-                                            Navigator.pushNamed(context, SHOP_PAGE, arguments: {
-                                              'shopId':widget.shopId
-                                            });
-                                          },
-                                          child: ProductCard(name: data.name,code: data.code,category:data.category.name,image: data.image,brand: data.brand.name,model_no: data.model_no,unit_price: data.unit_price,),
-                                      ),
+                                      child:  ProductCard(name: data.name,code: data.code,category:data.category.name,image: data.image,brand: data.brand.name,model_no: data.model_no,unit_price: data.unit_price,),
                                     )
                                     ).toList()
                                 ),

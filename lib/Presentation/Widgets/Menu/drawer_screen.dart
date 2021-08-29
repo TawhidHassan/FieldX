@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
 import 'package:fieldx/Presentation/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -80,18 +81,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             ),
             Column(
               children: <Widget>[
-                InkWell(
-                  onTap: (){
-                    Navigator.pushReplacement(context, PageTransition(HomePage()));
-                  },
-                  child: NewRow(
-                    text: 'Settings',
-                    icon: Icons.error_outline,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+
                 NewRow(
                   text: 'Profile',
                   icon: Icons.person_outline,
@@ -99,29 +89,21 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                NewRow(
-                  text: 'Messages',
-                  icon: Icons.chat_bubble_outline,
+                InkWell(
+                  onTap: (){
+                    Navigator.pushNamed(context, PRODUCT_LIST_PAGE);
+                  },
+                  child: NewRow(
+                    text: 'Products',
+                    icon: Icons.pages_rounded,
+                  ),
                 ),
+
                 SizedBox(
                   height: 20,
                 ),
                 NewRow(
-                  text: 'Saved',
-                  icon: Icons.bookmark_border,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Favorites',
-                  icon: Icons.favorite_border,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                NewRow(
-                  text: 'Hint',
+                  text: 'Orders',
                   icon: Icons.lightbulb_outline,
                 ),
                 SizedBox(

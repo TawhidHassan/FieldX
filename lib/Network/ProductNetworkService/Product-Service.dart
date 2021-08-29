@@ -4,12 +4,12 @@ import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 
-class RouteNetwork {
+class ProductNetwork {
   var logger = Logger();
 
-  Future loadRouteForUser(int userId, String token) async{
+  Future loadproduct(String token) async{
     try{
-      final response=await get(Uri.parse(BASE_URL+"geo/routes/sr/"+userId.toString()),
+      final response=await get(Uri.parse(BASE_URL+"product/all-products/"),
         headers: {
           "Authorization":"Bearer "+token
         },
@@ -22,5 +22,6 @@ class RouteNetwork {
     }
 
   }
+
 
 }
