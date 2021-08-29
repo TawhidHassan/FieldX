@@ -1,8 +1,11 @@
+import 'package:fieldx/Bloc/Order/order_cubit.dart';
 import 'package:fieldx/Bloc/Product/product_cubit.dart';
 import 'package:fieldx/Bloc/User/user_cubit.dart';
 import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
+import 'package:fieldx/Presentation/Page/Order/OrderCreate.dart';
 import 'package:fieldx/Presentation/Page/Product/Product.dart';
+import 'package:fieldx/Presentation/Page/Product/ProductDetails.dart';
 import 'package:fieldx/Presentation/Page/Product/ProductShow.dart';
 import 'package:fieldx/Presentation/Page/Shop/Shops.dart';
 import 'package:fieldx/Presentation/Screens/splash_screen.dart';
@@ -39,6 +42,29 @@ class AppRouter {
             builder: (BuildContext context) => BlocProvider(
               create: (context) => ProductCubit(),
               child: ProductShow(),
+            ));
+      case ORDER_TAKE_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => OrderCubit(),
+              child: OrderCreate(
+                shopId: arguments['shopId'],
+                productId: arguments['productId'],
+                heroTag: arguments['heroTag'],
+                image: arguments['image'],
+              ),
+            ));
+      case PRODUCT_DETAILS_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => OrderCubit(),
+              child: ProductDetails(
+                shopId: arguments['shopId'],
+                productId: arguments['productId'],
+                heroTag: arguments['heroTag'],
+                image: arguments['image'],
+                product: arguments['product'],
+              ),
             ));
 
       default:

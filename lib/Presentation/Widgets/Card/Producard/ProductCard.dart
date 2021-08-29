@@ -58,7 +58,10 @@ class ProductCard extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 30.0,
                   child: ClipRRect(
-                    child: Image.network(BASE_URL_image+image),
+                    child: Hero(
+                      tag: image+code,
+                        child: Image.network(BASE_URL_image+image)
+                    ),
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                 ),

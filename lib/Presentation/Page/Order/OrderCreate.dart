@@ -12,7 +12,9 @@ import 'package:lottie/lottie.dart';
 class OrderCreate extends StatefulWidget {
   final int shopId;
   final int productId;
-  const OrderCreate({Key key, this.shopId, this.productId}) : super(key: key);
+  final String heroTag;
+  final String image;
+  const OrderCreate({Key key, this.shopId, this.productId, this.heroTag, this.image}) : super(key: key);
   @override
   _OrderCreateState createState() => _OrderCreateState();
 }
@@ -41,7 +43,7 @@ class _OrderCreateState extends State<OrderCreate> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Products"),),
+      appBar: AppBar(title: Text("Order Create"),),
       body: Material(
         elevation: 30.0,
         shadowColor: Colors.grey,
@@ -51,7 +53,12 @@ class _OrderCreateState extends State<OrderCreate> {
           child: Column(
             children: [
               SizedBox(height:3,),
-
+                Center(
+                  child:  Hero(
+                      tag: widget.heroTag,
+                      child: Image.network(BASE_URL_image+widget.image)
+                  ),
+                )
             ],
           ),
         ),

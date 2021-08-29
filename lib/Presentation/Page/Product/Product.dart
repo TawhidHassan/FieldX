@@ -86,8 +86,12 @@ class _ProductsState extends State<Products> {
                                       margin: EdgeInsets.only(bottom: 14),
                                       child:  InkWell(
                                           onTap: (){
-                                            Navigator.pushNamed(context, SHOP_PAGE, arguments: {
-                                              'shopId':widget.shopId
+                                            Navigator.pushNamed(context, PRODUCT_DETAILS_PAGE, arguments: {
+                                              'shopId':widget.shopId,
+                                              'productId':data.id,
+                                              'heroTag':data.image+data.code,
+                                              'image':data.image,
+                                              'product':data
                                             });
                                           },
                                           child: ProductCard(name: data.name,code: data.code,category:data.category.name,image: data.image,brand: data.brand.name,model_no: data.model_no,unit_price: data.unit_price,),
