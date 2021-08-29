@@ -1,6 +1,8 @@
+import 'package:fieldx/Bloc/Product/product_cubit.dart';
 import 'package:fieldx/Bloc/User/user_cubit.dart';
 import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
+import 'package:fieldx/Presentation/Page/Product/Product.dart';
 import 'package:fieldx/Presentation/Page/Shop/Shops.dart';
 import 'package:fieldx/Presentation/Screens/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +26,12 @@ class AppRouter {
             builder: (BuildContext context) => BlocProvider(
               create: (context) => UserCubit(),
               child: Shops(shopId: arguments['shopId'],),
+            ));
+      case PRODUCT_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => ProductCubit(),
+              child: Products(shopId: arguments['shopId'],),
             ));
 
       default:

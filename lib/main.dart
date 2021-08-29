@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:fieldx/Bloc/Route/route_cubit.dart';
+import 'package:fieldx/Bloc/Shop/shop_cubit.dart';
 import 'package:fieldx/Bloc/User/user_cubit.dart';
 import 'package:fieldx/Route/app_router.dart';
 // @dart=2.9
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<RouteCubit>(
           create: (context) => RouteCubit(),
+        ),
+        BlocProvider<ShopCubit>(
+          create: (context) => ShopCubit(),
         ),
       ],
       child: MaterialApp(

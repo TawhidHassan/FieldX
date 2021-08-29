@@ -11,3 +11,4 @@ const HOME_PAGE = "/home_page";
 const LOGIN_PAGE = "/login_page";
 
 const SHOP_PAGE = "/shop_page";
+const PRODUCT_PAGE = "/product_page";

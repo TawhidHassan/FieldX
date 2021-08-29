@@ -7,15 +7,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 
-class Shops extends StatefulWidget {
+class Products extends StatefulWidget {
   final int shopId;
 
-  const Shops({Key key, this.shopId}) : super(key: key);
+  const Products({Key key, this.shopId}) : super(key: key);
   @override
-  _ShopsState createState() => _ShopsState();
+  _ProductsState createState() => _ProductsState();
 }
 
-class _ShopsState extends State<Shops> {
+class _ProductsState extends State<Products> {
 
   String token;
   void getData() async{
@@ -39,7 +39,7 @@ class _ShopsState extends State<Shops> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Shops"),),
+      appBar: AppBar(title: Text("Products"),),
       body: Material(
         elevation: 30.0,
         shadowColor: Colors.grey,
@@ -68,8 +68,8 @@ class _ShopsState extends State<Shops> {
                               data.data.isEmpty? Column(
                                 children: [
                                   SizedBox(
-                                      height: 300,
-                                      width: 300,
+                                      height: 200,
+                                      width: 200,
                                       child: Lottie.asset('assets/lottie/empty.json')
                                   ),
                                   Text(("No data found")),
@@ -84,7 +84,7 @@ class _ShopsState extends State<Shops> {
                                       margin: EdgeInsets.only(bottom: 14),
                                       child:  InkWell(
                                           onTap: (){
-                                            Navigator.pushNamed(context, PRODUCT_PAGE, arguments: {
+                                            Navigator.pushNamed(context, SHOP_PAGE, arguments: {
                                               'shopId':data.id
                                             });
                                           },

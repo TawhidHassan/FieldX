@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class ShopCard extends StatelessWidget {
+  final String name;
+  final String code;
+  final String ownerName;
+
+  const ShopCard({Key key, this.name, this.code, this.ownerName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final  _random = Random();
@@ -52,17 +57,17 @@ class ShopCard extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name Walton",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w800,fontSize: 22),),
+                      Text(name,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w800,fontSize: 22),),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Store code",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text("Store code:"+code,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 16),),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Owner Name: Jubair",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 16),),
+                          Text("Owner Name:"+ownerName,style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 16),),
                         ],
                       ),
 
