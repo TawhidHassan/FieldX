@@ -9,3 +9,8 @@ class LoginSuccessful extends UserState {
   final Login login;
   LoginSuccessful({this.login});
 }
+
+class DpUserGet extends UserState {
+  final DpResponse dpResponse;
+  DpUserGet({this.dpResponse});
+}

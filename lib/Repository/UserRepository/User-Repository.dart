@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:fieldx/Data/Model/Login/Login.dart';
+import 'package:fieldx/Data/Model/User/DpResponse.dart';
 import 'package:fieldx/Network/UserNetworkService/User-Service.dart';
 import 'package:logger/logger.dart';
 
@@ -27,5 +28,11 @@ class UserRepository {
     // print(userRaw);
     return userRaw;
   }
+
+ Future<DpResponse> loadDpUsers(String token, int routeId)async {
+   final userRaw=await UserNetwork().loadDpUsers(token,routeId);
+   return DpResponse.fromJson(userRaw);
+ }
+
 
 }

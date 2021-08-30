@@ -29,4 +29,19 @@ class UserNetwork {
     }
   }
 
+  Future loadDpUsers(String token, int routeId) async{
+    try{
+      final response=await get(Uri.parse(BASE_URL+"dp/route/"+routeId.toString()),
+        headers: {
+          "Authorization":"Bearer "+token
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
 }

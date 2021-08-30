@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fieldx/Data/Model/Login/Login.dart';
+import 'package:fieldx/Data/Model/User/DpResponse.dart';
 import 'package:fieldx/Repository/UserRepository/User-Repository.dart';
 import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:logger/logger.dart';
@@ -22,7 +23,17 @@ class UserCubit extends Cubit<UserState> {
       }else{
         emit(LoginSuccessful(login: null))
       }
+    });
+  }
 
+  void loadDpUsers(String token, int routeId) {
+    UserRepository().loadDpUsers(token, routeId).then((value) => {
+      logger.d(value),
+      if(value!=null){
+        // logger.d(value),
+        // logger.d(value.token),
+        emit(DpUserGet(dpResponse: value))
+      }
     });
   }
 }

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:cuberto_bottom_bar/cuberto_bottom_bar.dart';
 
 import 'Map/MapRoute.dart';
+import 'Order/OrderCreate.dart';
+import 'Order/RouteSelectPage.dart';
 import 'Route/Routes.dart';
 
 class MainScreen extends StatefulWidget {
@@ -39,7 +41,7 @@ class _MainScreenState extends State<MainScreen>
     tabs.add(
         Tabs(Icons.map_outlined, "Map", Colors.amber, getGradient(Colors.amber)));
     tabs.add(Tabs(
-        Icons.perm_identity, "Profile", Colors.teal, getGradient(Colors.teal)));
+        Icons.border_color, "Order", Colors.teal, getGradient(Colors.teal)));
     tabBarController = new PageController(initialPage: 0);
   }
 
@@ -53,7 +55,7 @@ class _MainScreenState extends State<MainScreen>
             HomePage(),
             Routes(),
             RouteMapPage(),
-            HomeScreen(),
+            RouteSelect(),
 
           ]),
 

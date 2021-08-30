@@ -12,6 +12,7 @@ const HOME_PAGE = "/home_page";
 const LOGIN_PAGE = "/login_page";
 
 const SHOP_PAGE = "/shop_page";
+const SHOP_SELECT_PAGE = "/shop_select_page";
 const PRODUCT_PAGE = "/product_page";
 const PRODUCT_DETAILS_PAGE = "/product_details_page";
 const PRODUCT_LIST_PAGE = "/product_list_page";
