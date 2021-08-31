@@ -13,10 +13,9 @@ class ProductEx {
     return '${item} ${quatity} ${price} ${total} ${id}';
   }
   Map toJson() => {
-    'id': id,
-    'item': item,
-    'quatity': quatity,
-    'price': price,
-    'total': total,
+    'product_id': id,
+    'quantity': quatity,
+    'unit_price': price,
+    'sub_total': total,
   };
 }
