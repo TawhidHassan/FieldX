@@ -12,7 +12,7 @@ class OerderSave extends OrderState{
 }
 
 class OrderGet extends OrderState{
-  final String data;
+  final OrderResponse orderResponse;
 
-  OrderGet(this.data);
+  OrderGet({this.orderResponse});
 }

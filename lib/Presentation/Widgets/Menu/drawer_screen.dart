@@ -102,9 +102,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                NewRow(
-                  text: 'Orders',
-                  icon: Icons.lightbulb_outline,
+                InkWell(
+                  onTap: (){
+                    Navigator.pushNamed(context, ORDER_SHOW_PAGE);
+                  },
+                  child: NewRow(
+                    text: 'Orders',
+                    icon: Icons.lightbulb_outline,
+                  ),
                 ),
                 SizedBox(
                   height: 20,

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fieldx/Data/DummyModel/ProductItem.dart';
+import 'package:fieldx/Data/Model/Order/OrderResponse.dart';
 import 'package:fieldx/Repository/OrderRepository/Order-Repository.dart';
 import 'package:meta/meta.dart';
 
@@ -20,7 +21,11 @@ class OrderCubit extends Cubit<OrderState> {
     });
   }
 
-  void getOrder(){
-
+  void getOrder(String token){
+    OrderRepository().getOrder(token).then((value) => {
+      if(value!=null){
+        emit(OrderGet(orderResponse: value))
+      }
+    });
   }
 }

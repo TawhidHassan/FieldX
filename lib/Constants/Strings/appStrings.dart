@@ -18,3 +18,4 @@ const PRODUCT_DETAILS_PAGE = "/product_details_page";
 const PRODUCT_LIST_PAGE = "/product_list_page";
 
 const ORDER_TAKE_PAGE = "/order_take_page";
+const ORDER_SHOW_PAGE = "/order_show_page";

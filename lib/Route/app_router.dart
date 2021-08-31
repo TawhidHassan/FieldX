@@ -4,6 +4,7 @@ import 'package:fieldx/Bloc/User/user_cubit.dart';
 import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
 import 'package:fieldx/Presentation/Page/Order/OrderCreate.dart';
+import 'package:fieldx/Presentation/Page/Order/OrdersShow.dart';
 import 'package:fieldx/Presentation/Page/Order/StoreSlectPage.dart';
 import 'package:fieldx/Presentation/Page/Product/Product.dart';
 import 'package:fieldx/Presentation/Page/Product/ProductDetails.dart';
@@ -55,9 +56,15 @@ class AppRouter {
             builder: (BuildContext context) => BlocProvider(
               create: (context) => OrderCubit(),
               child: OrderCreate(
-                shopId: arguments['shopId'],
-                routeId:arguments['routeId']
+                  shopId: arguments['shopId'],
+                  routeId:arguments['routeId']
               ),
+            ));
+      case ORDER_SHOW_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => OrderCubit(),
+              child: OrderShows(),
             ));
       case PRODUCT_DETAILS_PAGE:
         return MaterialPageRoute(

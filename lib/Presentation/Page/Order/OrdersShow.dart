@@ -8,12 +8,12 @@ import 'package:logger/logger.dart';
 import 'package:lottie/lottie.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-class SalesMonthWise extends StatefulWidget {
+class OrderShows extends StatefulWidget {
   @override
-  _SalesMonthWiseState createState() => _SalesMonthWiseState();
+  _OrderShowsState createState() => _OrderShowsState();
 }
 
-class _SalesMonthWiseState extends State<SalesMonthWise> {
+class _OrderShowsState extends State<OrderShows> {
   var refreshKey = GlobalKey<RefreshIndicatorState>();
   String leaveDate;
   String month;
@@ -29,7 +29,7 @@ class _SalesMonthWiseState extends State<SalesMonthWise> {
     if (users.get('token') != null) {
       setState(() {
         token=users.get('token');
-        BlocProvider.of<OrderCubit>(context).getOrder();
+        BlocProvider.of<OrderCubit>(context).getOrder(token);
       });
     }
   }
@@ -60,6 +60,7 @@ class _SalesMonthWiseState extends State<SalesMonthWise> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(title: Text("Order List"),),
       body:  BlocBuilder<OrderCubit, OrderState>(
         builder: (context, state) {
           if(!(state is OrderGet)){
@@ -67,8 +68,8 @@ class _SalesMonthWiseState extends State<SalesMonthWise> {
               child: CircularProgressIndicator(),
             );
           }
-          final sales= (state as OrderGet).saleResponsex;
-          Logger().d(sales.sales);
+          final data= (state as OrderGet).orderResponse;
+          Logger().d(data.data);
           return
             Material(
               elevation: 30.0,
@@ -112,7 +113,7 @@ class _SalesMonthWiseState extends State<SalesMonthWise> {
                                         )
                                     ),
                                   ),
-                                  sales.sales.isEmpty?Center(
+                                  data.data.isEmpty?Center(
                                     child: Column(
                                       children: [
                                         SizedBox(
@@ -130,22 +131,22 @@ class _SalesMonthWiseState extends State<SalesMonthWise> {
                                     child: ListView(
                                       physics:
                                       BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                                      children:sales.sales.map((sale) =>
+                                      children:data.data.map((data) =>
                                           Container(
                                               margin: EdgeInsets.only(bottom: 14),
                                               child:
                                               MySalescard(
-                                                customername: sale.customername,
-                                                price: sale.price,
-                                                remark: sale.remark,
-                                                colorx: sale.color,
-                                                quantity: sale.quatity.toString(),
-                                                customerEmail: sale.customeremail,
-                                                customerMobile: sale.customermobile,
-                                                date: sale.createdAt,
-                                                employ: sale.username,
-                                                productName: sale.productName,
-                                                storeName: sale.storename,)
+                                                customername: data.sr_name,
+                                                price: data.grand_total.toString(),
+                                                remark: "sssss",
+                                                deliveryDate: data.delivery_date,
+                                                quantity: data.quantity.toString(),
+                                                customerEmail: "s",
+                                                dp: data.dp_name,
+                                                date: data.order_date,
+                                                employ: "sale.username",
+                                                productName: "sale.productName",
+                                                storeName: "sale.storename",)
                                           )
                                       ).toList(),
                                     ),

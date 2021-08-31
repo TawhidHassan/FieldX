@@ -1,4 +1,5 @@
 import 'package:fieldx/Data/DummyModel/ProductItem.dart';
+import 'package:fieldx/Data/Model/Order/OrderResponse.dart';
 import 'package:fieldx/Data/Model/Product/ProductResponse.dart';
 import 'package:fieldx/Data/Model/Route/RouteResponse.dart';
 import 'package:fieldx/Data/Model/Shop/ShopResponse.dart';
@@ -34,6 +35,12 @@ class OrderRepository {
     final raw=await OrderNetwork().saveOrder(token,data);
     logger.d(raw);
     return raw;
+  }
+
+  Future<OrderResponse> getOrder(String token) async{
+    final raw=await OrderNetwork().getOrder(token);
+    logger.d(raw);
+    return OrderResponse.fromJson(raw);
   }
 
 

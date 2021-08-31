@@ -11,9 +11,9 @@ class MySalescard extends StatefulWidget {
   final String productName;
   final String quantity;
   final String date;
-  final String colorx;
+  final String deliveryDate;
   final String customerEmail;
-  final String customerMobile;
+  final String dp;
   final String storeName;
   final String price;
 
@@ -25,9 +25,9 @@ class MySalescard extends StatefulWidget {
       this.productName,
       this.quantity,
       this.date,
-      this.colorx,
+      this.deliveryDate,
       this.customerEmail,
-      this.customerMobile,
+      this.dp,
       this.storeName,
       this.price});
 
@@ -41,7 +41,6 @@ class _MySalescardState extends State<MySalescard> {
     final  _random = Random();
     Color color=Colors.primaries[_random.nextInt(Colors.primaries.length)]
     [_random.nextInt(9) * 100];
-    int totla=int.parse(widget.price)*int.parse(widget.quantity);
     return
       Padding(
         padding: EdgeInsets.all(12),
@@ -68,12 +67,10 @@ class _MySalescardState extends State<MySalescard> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.customername,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.black),),
-                          Text("Contact: ${widget.customerMobile},o",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black),),
+                          Text("DP: ${widget.dp}",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black),),
                           Text("date: "+widget.date.substring(0, 10),style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black),),
-                          Text("${widget.productName}| ${widget.colorx} | ${widget.quantity}",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.black),),
-                          Text("Sold By: ${widget.employ}",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.blue),),
-                          Text("Store: ${widget.storeName}",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black),),
+                          Text("Delivery Date:"+widget.deliveryDate.substring(0,10),style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.black),),
+                          Text("Sold By: ${widget.customername}",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.blue),),
                         ],
                       ),
                     ),
@@ -91,8 +88,6 @@ class _MySalescardState extends State<MySalescard> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("${widget.price} Tk",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w800,color: Colors.white),),
-                          Text("${widget.quantity} x",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w800,color: Colors.white),),
-                          Text(totla.toString()+" Tk",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w800,color: Colors.white),),
                         ],
                         // for Network image
                       ),
