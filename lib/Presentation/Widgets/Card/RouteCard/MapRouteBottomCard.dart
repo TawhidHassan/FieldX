@@ -4,9 +4,13 @@ import 'package:fieldx/Presentation/Widgets/CirculeLotti/CirculeLotti.dart';
 import 'package:flutter/material.dart';
 
 class MapRouteBottomCard extends StatelessWidget {
+  final String name;
+
   final  _random = Random();
   Color color=Colors.primaries[Random().nextInt(Colors.primaries.length)]
   [Random().nextInt(9) * 100];
+
+   MapRouteBottomCard({Key key, this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return  Container(
@@ -30,8 +34,7 @@ class MapRouteBottomCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Route NAme",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w800),),
-                Text("DP: korim",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300),),
+                Text(name,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w800),),
               ],
             ),
           ),
