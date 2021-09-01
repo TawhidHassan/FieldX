@@ -60,5 +60,22 @@ class OrderNetwork {
 
  }
 
+  Future getOrderByShop(String token, int shopId) async{
+    try{
+      final response=await get(Uri.parse(BASE_URL+"order/products/store/"+shopId.toString()),
+        headers: {
+          "Content-type": "application/json",
+          "Accept":"application/json",
+          "Authorization":"Bearer "+token,
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
 
 }

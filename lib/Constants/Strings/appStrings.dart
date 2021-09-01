@@ -19,3 +19,4 @@ const PRODUCT_LIST_PAGE = "/product_list_page";
 
 const ORDER_TAKE_PAGE = "/order_take_page";
 const ORDER_SHOW_PAGE = "/order_show_page";
+const ORDER_SHOW_BY_SHOP_PAGE = "/order_show_by_shop_page";

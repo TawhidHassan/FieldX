@@ -43,5 +43,11 @@ class OrderRepository {
     return OrderResponse.fromJson(raw);
   }
 
+  Future<OrderResponse> getOrderByShop(String token, int shopId)async {
+    final raw=await OrderNetwork().getOrderByShop(token,shopId);
+    logger.d(raw);
+    return OrderResponse.fromJson(raw);
+  }
+
 
 }

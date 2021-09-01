@@ -28,4 +28,12 @@ class OrderCubit extends Cubit<OrderState> {
       }
     });
   }
+
+  void getOrderByShop(String token, int shopId) {
+    OrderRepository().getOrderByShop(token,shopId).then((value) => {
+      if(value!=null){
+        emit(OrderGet(orderResponse: value))
+      }
+    });
+  }
 }

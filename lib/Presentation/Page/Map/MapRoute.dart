@@ -243,7 +243,7 @@ class _RouteMapPageState extends State<RouteMapPage> {
                 infoWindow: InfoWindow(
                     title: e.name,
                   onTap: (){
-                    Navigator.pushNamed(context, SHOP_PAGE, arguments: {
+                    Navigator.pushNamed(context, ORDER_SHOW_BY_SHOP_PAGE, arguments: {
                       'shopId':e.id
                     });
                   }
