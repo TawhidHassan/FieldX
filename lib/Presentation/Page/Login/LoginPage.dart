@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
               });
             }else{
               Logger().d(data.user.id);
-              storeToken(data.token,data.user.id, data.user.first_name, data.user.last_name, data.user.email, data.user.organization_id);
+              storeToken(data.token,data.user.id, data.user.first_name, data.user.last_name, data.user.email, data.user.organization_id,data.roles[0].role_name);
               Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-  Future storeToken(String token,int id,String name,String lastName,String email,String orgId) async{
+  Future storeToken(String token,int id,String name,String lastName,String email,String orgId,String role) async{
     print(id);
     users.put("token", token);
     users.put("name", name);
@@ -136,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
     users.put("email", email);
     users.put("userId", id);
     users.put("orgId", orgId);
+    users.put("role", role);
   }
 
 }

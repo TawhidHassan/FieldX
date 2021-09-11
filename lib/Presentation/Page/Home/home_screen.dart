@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,6 +12,22 @@ class _HomeScreenState extends State<HomeScreen> {
   double xOffset = 0;
   double yOffset = 0;
   bool isDrawerOpen = false;
+  String role;
+
+  void getData() async{
+    var users= await Hive.openBox('users');
+    // print("hive "+users.get('token'));
+    setState(() {
+      role=users.get('role');
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -71,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: MediaQuery.of(context).size.height*0.9,
               child: Column(
                 children:[
-
+                  Text(role)
                 ],
               ),
             )

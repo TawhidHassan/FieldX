@@ -73,7 +73,7 @@ class _RoutesState extends State<Routes> {
                                   ),
                                   Text(("No data found")),
                                 ],
-                              ):Container(),
+                              ):
                               SizedBox(
                                 height: MediaQuery.of(context).size.height*0.8,
                                 child: ListView(
