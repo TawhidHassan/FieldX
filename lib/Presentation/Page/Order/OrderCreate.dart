@@ -52,7 +52,7 @@ class _OrderCreateState extends State<OrderCreate> {
   static final DateFormat formate = DateFormat('yyyy-MM-dd');
   final String formatted = formatter.format(now);
   final String dateIn=formate.format(now);
-
+  int userId;
   void getData() async{
     var users= await Hive.openBox('users');
     // print("hive "+users.get('userId').toString());
@@ -60,6 +60,7 @@ class _OrderCreateState extends State<OrderCreate> {
       setState(() {
         token=users.get('token');
         name=users.get('name');
+        userId=users.get('userId');
         BlocProvider.of<ProductCubit>(context).loadproduct(token);
         BlocProvider.of<UserCubit>(context).loadDpUsers(token,widget.routeId);
       });
@@ -376,7 +377,7 @@ class _OrderCreateState extends State<OrderCreate> {
                     BlocProvider.of<OrderCubit>(context).saveOrder(
                         token,widget.routeId,widget.shopId,name,selectedDp.dp_first_name,
                         dateIn,deliveryDate.substring(0,10),itemX,beforeDiscount,int.parse(discount.text),
-                        afterDiscount,int.parse(vat.text),grandTota
+                        afterDiscount,int.parse(vat.text),grandTota,userId,int.parse(selectedDp.dp_id)
                     );
                   },
                     width: MediaQuery.of(context).size.width*0.6,color: Colors.green,

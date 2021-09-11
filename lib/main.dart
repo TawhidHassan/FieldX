@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:fieldx/Bloc/Order/order_cubit.dart';
 import 'package:fieldx/Bloc/Product/product_cubit.dart';
 import 'package:fieldx/Bloc/Route/route_cubit.dart';
 import 'package:fieldx/Bloc/Shop/shop_cubit.dart';
@@ -51,6 +52,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ProductCubit>(
           create: (context) => ProductCubit(),
+        ),
+        BlocProvider<OrderCubit>(
+          create: (context) => OrderCubit(),
         ),
       ],
       child: MaterialApp(

@@ -16,3 +16,22 @@ class OrderGet extends OrderState{
 
   OrderGet({this.orderResponse});
 }
+
+class DpPendingOrderGet extends OrderState{
+  final OrderDpResponse orderDpResponse;
+
+  DpPendingOrderGet({this.orderDpResponse});
+}
+
+
+class GetOrderDetails extends OrderState{
+  final OrderDetailsResponse orderDetailsResponse;
+
+  GetOrderDetails({this.orderDetailsResponse});
+}
+
+class UpdateOrder extends OrderState{
+  final String status;
+
+  UpdateOrder({this.status});
+}

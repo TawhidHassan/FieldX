@@ -39,4 +39,20 @@ class ShopNetwork {
     }
   }
 
+ Future loadStoreDetails(int shopId, String token) async{
+   logger.d(shopId);
+   try{
+     final response=await get(Uri.parse(BASE_URL+"store/store-details/"+shopId.toString()),
+       headers: {
+         "Authorization":"Bearer "+token
+       },
+
+     );
+     logger.d(response.body);
+     return json.decode(response.body);
+   }catch(err){
+     logger.d(err.toString());
+   }
+ }
+
 }

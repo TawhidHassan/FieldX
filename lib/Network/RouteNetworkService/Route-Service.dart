@@ -23,4 +23,19 @@ class RouteNetwork {
 
   }
 
+  Future loadRouteForDP(String token) async{
+    try{
+      final response=await get(Uri.parse(BASE_URL+"geo/dp/routes"),
+        headers: {
+          "Authorization":"Bearer "+token
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
 }

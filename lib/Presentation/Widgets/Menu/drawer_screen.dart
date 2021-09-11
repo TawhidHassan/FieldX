@@ -16,6 +16,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   String name;
   String lastName;
   String email;
+  String role;
   var users;
   @override
    initState()  {
@@ -31,6 +32,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
     setState(() {
       name=users.get('name');
       lastName=users.get('lastName');
+      role=users.get('role');
     });
   }
 
@@ -86,10 +88,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   text: 'Profile',
                   icon: Icons.person_outline,
                 ),
-                SizedBox(
+                role=="SR"?SizedBox(
                   height: 20,
-                ),
-                InkWell(
+                ):Container(),
+                role=="SR"? InkWell(
                   onTap: (){
                     Navigator.pushNamed(context, PRODUCT_LIST_PAGE);
                   },
@@ -97,12 +99,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     text: 'Products',
                     icon: Icons.pages_rounded,
                   ),
-                ),
+                ):Container(),
 
-                SizedBox(
+                role=="SR"?SizedBox(
                   height: 20,
-                ),
-                InkWell(
+                ):Container(),
+                role=="SR"? InkWell(
                   onTap: (){
                     Navigator.pushNamed(context, ORDER_SHOW_PAGE);
                   },
@@ -110,7 +112,19 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     text: 'Orders',
                     icon: Icons.lightbulb_outline,
                   ),
-                ),
+                ):Container(),
+                role=="DP"?SizedBox(
+                  height: 20,
+                ):Container(),
+                role=="DP"? InkWell(
+                  onTap: (){
+                    Navigator.pushNamed(context, ORDER_PENDING_PAGE);
+                  },
+                  child: NewRow(
+                    text: 'Pending Orders',
+                    icon: Icons.lightbulb_outline,
+                  ),
+                ):Container(),
                 SizedBox(
                   height: 20,
                 ),

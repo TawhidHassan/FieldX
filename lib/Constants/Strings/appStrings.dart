@@ -17,6 +17,13 @@ const PRODUCT_PAGE = "/product_page";
 const PRODUCT_DETAILS_PAGE = "/product_details_page";
 const PRODUCT_LIST_PAGE = "/product_list_page";
 
+
 const ORDER_TAKE_PAGE = "/order_take_page";
 const ORDER_SHOW_PAGE = "/order_show_page";
 const ORDER_SHOW_BY_SHOP_PAGE = "/order_show_by_shop_page";
+
+
+const ORDER_PENDING_BY_ROUTE_PAGE = "/pending_order_byRouteId_page";
+
+const ORDER_PENDING_PAGE= "/pending_order__page";
+const ORDER_PENDING_DETAILS_PAGE= "/pending_order_details__page";

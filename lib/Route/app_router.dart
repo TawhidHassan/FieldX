@@ -5,6 +5,9 @@ import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
 import 'package:fieldx/Presentation/Page/Order/OrderCreate.dart';
 import 'package:fieldx/Presentation/Page/Order/OrdersShow.dart';
+import 'package:fieldx/Presentation/Page/Order/PendingOrder/PendingOrder.dart';
+import 'package:fieldx/Presentation/Page/Order/PendingOrder/PendingOrderDetails.dart';
+import 'package:fieldx/Presentation/Page/Order/PendingOrder/PendingOrderUser.dart';
 import 'package:fieldx/Presentation/Page/Order/ShopByOrdersShow.dart';
 import 'package:fieldx/Presentation/Page/Order/StoreSlectPage.dart';
 import 'package:fieldx/Presentation/Page/Product/Product.dart';
@@ -33,6 +36,24 @@ class AppRouter {
             builder: (BuildContext context) => BlocProvider(
               create: (context) => UserCubit(),
               child: Shops(shopId: arguments['shopId'],),
+            ));
+      case ORDER_PENDING_BY_ROUTE_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => OrderCubit(),
+              child: PendingOrderByRouteId(routeId:arguments['routeId'],),
+            ));
+      case ORDER_PENDING_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => OrderCubit(),
+              child: PendingOrderByUserId(),
+            ));
+      case ORDER_PENDING_DETAILS_PAGE:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => BlocProvider(
+              create: (context) => OrderCubit(),
+              child: PendingOrderDetails(orderId: arguments['orderId'],),
             ));
       case SHOP_SELECT_PAGE:
         return MaterialPageRoute(

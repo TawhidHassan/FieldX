@@ -1,29 +1,35 @@
+import 'package:fieldx/Bloc/Order/order_cubit.dart';
 import 'package:fieldx/Bloc/Route/route_cubit.dart';
-import 'package:fieldx/Constants/Strings/appStrings.dart';
+import 'package:fieldx/Presentation/Widgets/Card/Order/MySalesCard.dart';
+import 'package:fieldx/Presentation/Widgets/Card/Order/PendingOrder.dart';
 import 'package:fieldx/Presentation/Widgets/Card/RouteCard/RouteCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 
-class RouteSelect extends StatefulWidget {
+class PendingOrderByRouteId extends StatefulWidget {
+  final int routeId;
+
+  const PendingOrderByRouteId({Key key, this.routeId}) : super(key: key);
   @override
-  _RouteSelectState createState() => _RouteSelectState();
+  _PendingOrderByRouteIdState createState() => _PendingOrderByRouteIdState();
 }
 
-class _RouteSelectState extends State<RouteSelect> {
-
+class _PendingOrderByRouteIdState extends State<PendingOrderByRouteId> {
 
   int userId;
   String token;
+  String userName;
   void getData() async{
     var users= await Hive.openBox('users');
     print("hive "+users.get('userId').toString());
     if (users.get('token') != null) {
       setState(() {
         userId=users.get('userId');
+        userName=users.get('name');
         token=users.get('token');
-        BlocProvider.of<RouteCubit>(context).loadRouteForUser(userId,token);
+        BlocProvider.of<OrderCubit>(context).loadPendingOrder(widget.routeId,token);
       });
     }
   }
@@ -36,9 +42,10 @@ class _RouteSelectState extends State<RouteSelect> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(title: Text("Select Route"),),
+      appBar: AppBar(
+        title: Text("Pending Order"),
+      ),
       body: Material(
         elevation: 30.0,
         shadowColor: Colors.grey,
@@ -50,12 +57,12 @@ class _RouteSelectState extends State<RouteSelect> {
               SizedBox(height:3,),
               Flexible(
                 flex:100,
-                child: BlocBuilder<RouteCubit, RouteState>(
+                child: BlocBuilder<OrderCubit, OrderState>(
                   builder: (context, state) {
-                    if(!(state is GetRoute)){
+                    if(!(state is DpPendingOrderGet)){
                       return Center(child: CircularProgressIndicator(),);
                     }
-                    final data=(state as GetRoute).routeResponse;
+                    final data=(state as DpPendingOrderGet).orderDpResponse;
                     return Material(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10)),
@@ -83,11 +90,17 @@ class _RouteSelectState extends State<RouteSelect> {
                                       margin: EdgeInsets.only(bottom: 14),
                                       child:  InkWell(
                                           onTap: (){
-                                            Navigator.pushNamed(context, SHOP_SELECT_PAGE, arguments: {
-                                              'shopId':data.id
-                                            });
+
                                           },
-                                          child: RouteCard(name: data.name,area: data.area.name,dp: data.dp.first_name,region: data.region.name,sr: data.sr.first_name,terotori: data.territory.name,)),
+                                          child: PendingOrderCard(dp:userName,date: data.order_date,productName: "",
+                                            quantity: data.quantity,customername:userName,price: data.grand_total,
+                                            deliveryDate: data.order_date,
+                                            remark: "sss",
+                                            customerEmail: "",
+                                            employ: "",
+                                            storeName: "",
+                                            status: data.status,
+                                          )),
                                     )
                                     ).toList()
                                 ),

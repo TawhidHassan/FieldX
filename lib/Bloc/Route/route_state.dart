@@ -10,3 +10,9 @@ class GetRoute extends RouteState{
 
   GetRoute({this.routeResponse});
 }
+
+class GetDpRoute extends RouteState{
+  final RouteResponse routeResponse;
+
+  GetDpRoute({this.routeResponse});
+}

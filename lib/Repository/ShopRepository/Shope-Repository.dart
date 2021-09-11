@@ -14,4 +14,10 @@ class ShopRepository {
     return ShopResponse.fromJson(raw);
   }
 
+  Future<ShopResponse> loadStoreDetails(int shopId, String token)async {
+    final raw=await ShopNetwork().loadStoreDetails(shopId,token);
+    logger.d(raw);
+    return ShopResponse.fromJson(raw);
+  }
+
 }

@@ -15,4 +15,12 @@ class ShopCubit extends Cubit<ShopState> {
       }
     });
   }
+
+  void loadStoreDetails(int shopId,String token) {
+    ShopRepository().loadStoreDetails(shopId,token).then((value) => {
+      if(value!=null){
+        emit(GetShop(shopResponse: value))
+      }
+    });
+  }
 }

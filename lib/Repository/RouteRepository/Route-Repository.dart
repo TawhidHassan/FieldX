@@ -11,4 +11,9 @@ class RouteRepository {
     return RouteResponse.fromJson(raw);
   }
 
+  Future<RouteResponse> loadRouteForDP(String token)async {
+    final raw=await RouteNetwork().loadRouteForDP(token);
+    logger.d(raw);
+    return RouteResponse.fromJson(raw);
+  }
 }

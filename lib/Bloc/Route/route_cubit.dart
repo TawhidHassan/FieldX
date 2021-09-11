@@ -15,4 +15,12 @@ class RouteCubit extends Cubit<RouteState> {
       }
     });
   }
+
+  void loadRouteForDP(String token) {
+    RouteRepository().loadRouteForDP(token).then((value) => {
+      if(value!=null){
+        emit(GetDpRoute(routeResponse: value))
+      }
+    });
+  }
 }

@@ -77,5 +77,73 @@ class OrderNetwork {
     }
   }
 
+  Future loadPendingOrder(String token, int routeId)async {
+    try{
+      final response=await get(Uri.parse(BASE_URL+"dp/order/stores/"+routeId.toString()),
+        headers: {
+          "Content-type": "application/json",
+          "Accept":"application/json",
+          "Authorization":"Bearer "+token,
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
+  Future loadPendingOrderDp(String token)async {
+    try{
+      final response=await get(Uri.parse("http://demo.fieldx.maacinfo.com/api/order/pendingOrders"),
+        headers: {
+          "Content-type": "application/json",
+          "Accept":"application/json",
+          "Authorization":"Bearer "+token,
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
+  Future orderDetails(String token, int orderId) async{
+    try{
+      final response=await get(Uri.parse(BASE_URL+"order/items/"+orderId.toString()),
+        headers: {
+          "Content-type": "application/json",
+          "Accept":"application/json",
+          "Authorization":"Bearer "+token,
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
+  Future updateOrderStatus(String token, int orderId)async {
+    try{
+      final response=await patch(Uri.parse(BASE_URL+"order/status/update/"+orderId.toString()),
+        headers: {
+          "Content-type": "application/json",
+          "Accept":"application/json",
+          "Authorization":"Bearer "+token,
+        },
+
+      );
+      logger.d(response.body);
+      return json.decode(response.body);
+    }catch(err){
+      logger.d(err.toString());
+    }
+  }
+
 
 }

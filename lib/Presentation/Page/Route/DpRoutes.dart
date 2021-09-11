@@ -6,12 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 
-class RouteSelect extends StatefulWidget {
+class DpRoutes extends StatefulWidget {
   @override
-  _RouteSelectState createState() => _RouteSelectState();
+  _DpRoutesState createState() => _DpRoutesState();
 }
 
-class _RouteSelectState extends State<RouteSelect> {
+class _DpRoutesState extends State<DpRoutes> {
 
 
   int userId;
@@ -23,7 +23,7 @@ class _RouteSelectState extends State<RouteSelect> {
       setState(() {
         userId=users.get('userId');
         token=users.get('token');
-        BlocProvider.of<RouteCubit>(context).loadRouteForUser(userId,token);
+        BlocProvider.of<RouteCubit>(context).loadRouteForDP(token);
       });
     }
   }
@@ -38,7 +38,7 @@ class _RouteSelectState extends State<RouteSelect> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Select Route"),),
+      appBar: AppBar(title: Text("Routes List"),),
       body: Material(
         elevation: 30.0,
         shadowColor: Colors.grey,
@@ -52,10 +52,10 @@ class _RouteSelectState extends State<RouteSelect> {
                 flex:100,
                 child: BlocBuilder<RouteCubit, RouteState>(
                   builder: (context, state) {
-                    if(!(state is GetRoute)){
+                    if(!(state is GetDpRoute)){
                       return Center(child: CircularProgressIndicator(),);
                     }
-                    final data=(state as GetRoute).routeResponse;
+                    final data=(state as GetDpRoute).routeResponse;
                     return Material(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10)),
@@ -83,7 +83,7 @@ class _RouteSelectState extends State<RouteSelect> {
                                       margin: EdgeInsets.only(bottom: 14),
                                       child:  InkWell(
                                           onTap: (){
-                                            Navigator.pushNamed(context, SHOP_SELECT_PAGE, arguments: {
+                                            Navigator.pushNamed(context, SHOP_PAGE, arguments: {
                                               'shopId':data.id
                                             });
                                           },

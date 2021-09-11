@@ -2,11 +2,15 @@
 
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
 import 'package:fieldx/Presentation/Page/Home/home_screen.dart';
+import 'package:fieldx/Presentation/Page/Route/DpRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:cuberto_bottom_bar/cuberto_bottom_bar.dart';
+import 'package:hive/hive.dart';
 
+import 'Map/DpOrderStoreMap.dart';
 import 'Map/MapRoute.dart';
 import 'Order/OrderCreate.dart';
+import 'Order/Ordered/RouteSelectPage.dart';
 import 'Order/RouteSelectPage.dart';
 import 'Route/Routes.dart';
 
@@ -25,10 +29,19 @@ class _MainScreenState extends State<MainScreen>
   Color inactiveColor = Colors.black;
   PageController tabBarController;
   List<Tabs> tabs = new List();
+  var users;
+  String role;
+  void getData() async{
+    users= await Hive.openBox('users');
+    setState(() {
+      role=users.get('role');
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    getData();
     currentPage = 0;
     tabs.add(Tabs(
       Icons.home,
@@ -53,9 +66,9 @@ class _MainScreenState extends State<MainScreen>
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             HomePage(),
-            Routes(),
-            RouteMapPage(),
-            RouteSelect(),
+            role=="SR"?Routes():DpRoutes(),
+            role=="SR"?RouteMapPage():DpOrderMapPage(),
+            role=="SR"?RouteSelect():DpRouteSelect(),
 
           ]),
 
