@@ -89,7 +89,7 @@ class _PendingOrderDetailsState extends State<PendingOrderDetails> {
                   ListView(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      children:  data.data.products.map((product) =>  Container(
+                      children:  data.data.products.asMap().entries.map((product) =>  Container(
                         margin: EdgeInsets.only(bottom: 14),
                         child: Column(
                           children: [
@@ -101,7 +101,7 @@ class _PendingOrderDetailsState extends State<PendingOrderDetails> {
                                   child: Container(
                                     color: Colors.grey,
                                     child: Image.network(
-                                      BASE_URL_image+product.image,
+                                      BASE_URL_image+product.value.image,
                                       height: 50.0,
                                       width: 50.0,
                                     ),
@@ -109,12 +109,18 @@ class _PendingOrderDetailsState extends State<PendingOrderDetails> {
                                 ),
                                 Column(
                                   children: [
-                                    Text(product.name),
-                                    Text(product.model_no),
+                                    Text(product.value.name),
+                                    Text(product.value.model_no),
                                   ],
                                 ),
-                                Text("Discount: "+product.max_discount+"Tk"),
-                                Text(product.unit_price+"Tk",style: TextStyle(fontWeight: FontWeight.bold),),
+                                Column(
+                                  children: [
+                                    Text(data.data.ordered_items[product.key].unit_price+"Tk",style: TextStyle(fontWeight: FontWeight.bold),),
+                                    Text("x"+double.parse(data.data.ordered_items[product.key].quantity).round().toString()),
+                                  ],
+                                ),
+
+                                Text(data.data.ordered_items[product.key].sub_total+"Tk",style: TextStyle(fontWeight: FontWeight.bold),),
 
                               ],
                             ),
