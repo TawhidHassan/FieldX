@@ -88,10 +88,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   text: 'Profile',
                   icon: Icons.person_outline,
                 ),
-                role=="SR"?SizedBox(
+                SizedBox(
                   height: 20,
-                ):Container(),
-                role=="SR"? InkWell(
+                ),
+                 InkWell(
                   onTap: (){
                     Navigator.pushNamed(context, PRODUCT_LIST_PAGE);
                   },
@@ -99,7 +99,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     text: 'Products',
                     icon: Icons.pages_rounded,
                   ),
-                ):Container(),
+                ),
 
                 role=="SR"?SizedBox(
                   height: 20,

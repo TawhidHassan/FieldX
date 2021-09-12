@@ -1,4 +1,5 @@
 import 'package:fieldx/Bloc/Order/order_cubit.dart';
+import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Widgets/Card/Order/MySalesCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -138,18 +139,25 @@ class _ShopByOrderShowsState extends State<ShopByOrderShows> {
                                           Container(
                                               margin: EdgeInsets.only(bottom: 14),
                                               child:
-                                              MySalescard(
-                                                customername: data.sr_name,
-                                                price: data.grand_total.toString(),
-                                                remark: "sssss",
-                                                deliveryDate: data.delivery_date,
-                                                quantity: data.quantity.toString(),
-                                                customerEmail: "s",
-                                                dp: data.dp_name,
-                                                date: data.order_date,
-                                                employ: "sale.username",
-                                                productName: "sale.productName",
-                                                storeName: "sale.storename",)
+                                              InkWell(
+                                                onTap: (){
+                                                  Navigator.pushNamed(context, ORDER_PENDING_DETAILS_PAGE,arguments: {
+                                                    "orderId":int.parse(data.order_id)
+                                                  });
+                                                },
+                                                child: MySalescard(
+                                                  customername: data.sr_name,
+                                                  price: data.grand_total.toString(),
+                                                  remark: "sssss",
+                                                  deliveryDate: data.delivery_date,
+                                                  quantity: data.quantity.toString(),
+                                                  customerEmail: "s",
+                                                  dp: data.dp_name,
+                                                  date: data.order_date,
+                                                  employ: "sale.username",
+                                                  productName: "sale.productName",
+                                                  storeName: "sale.storename",),
+                                              )
                                           )
                                       ).toList(),
                                     ),

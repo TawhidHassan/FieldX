@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:fieldx/Constants/Colors/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -44,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.deepOrange,
+              color: kPrimaryColorx,
               padding: EdgeInsets.symmetric(horizontal: 10,vertical: 18),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: MediaQuery.of(context).size.height*0.9,
               child: Column(
                 children:[
-                  Text(role)
+
                 ],
               ),
             )

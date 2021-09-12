@@ -28,13 +28,14 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       controller: widget.controller,
       obscureText: _passwordVisible,
       // onChanged: widget.onChanged,
-      cursorColor: kPrimaryColor,
+      cursorColor: Colors.white,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your password';
         }
         return null;
       },
+      style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: "Password",
         fillColor: Colors.white,

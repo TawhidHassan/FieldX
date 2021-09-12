@@ -44,7 +44,7 @@ class _PendingOrderByRouteIdState extends State<PendingOrderByRouteId> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pending Order"),
+        title: Text("Order"),
       ),
       body: Material(
         elevation: 30.0,

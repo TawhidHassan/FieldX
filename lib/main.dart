@@ -16,6 +16,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
 
+import 'Constants/Colors/constants.dart';
+
 
 
 
@@ -61,7 +63,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch:Colors.deepOrange,
+          primarySwatch:kPrimaryColorx,
           // primaryColor: Color.fromARGB(255, 133, 4, 224),
         ),
         onGenerateRoute: router.generateRoute,

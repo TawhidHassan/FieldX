@@ -1,6 +1,7 @@
 
 
 import 'dart:async';
+import 'package:fieldx/Constants/Colors/constants.dart';
 import 'package:fieldx/Presentation/Animation/fade_in_animation.dart';
 import 'package:fieldx/Presentation/Page/Home/HomePage.dart';
 import 'package:fieldx/Presentation/Page/Login/LoginPage.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   bool isLogin=false;
 
   startTime() async {
-    var _duration = new Duration(seconds: 3);
+    var _duration = new Duration(seconds: 1);
     return new Timer(_duration, myPage);
   }
 
@@ -61,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     getData();
     startTime();
     _scaleController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 100));
 
     _scaleAnimation =
     Tween<double>(begin: 1.0, end: 0.8).animate(_scaleController)
@@ -72,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       });
 
     _widthController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 600));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 100));
 
     _widthAnimation =
     Tween<double>(begin: 80.0, end: 300.0).animate(_widthController)
@@ -97,7 +98,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       });
 
     _scale2Controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 100));
 
     _scale2Animation =
     Tween<double>(begin: 1.0, end: 32.0).animate(_scale2Controller)
@@ -125,7 +126,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         .height;
 
     return Scaffold(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: kPrimaryColorx,
       body: Container(
         width: double.infinity,
         child: Stack(
@@ -137,12 +138,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   child: FadeAnimation(
                       1.6,
                       Container(
-                        width: width / 2.3,
-                        height: height / 4.8,
+                        width: width / 3.3,
+                        height: height / 6.8,
                         decoration: BoxDecoration(
-                            color: Colors.deepOrange,
                             image: DecorationImage(
-                                image: AssetImage('assets/images/user.png'),
+                                image: AssetImage('assets/images/fieldx.jpg'),
                                 fit: BoxFit.cover)),
                       )),
                 )),
@@ -150,7 +150,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
 //                  SizedBox(height: height / 30,),
                   FadeAnimation(
@@ -158,7 +158,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                       Text(
                         "Welcome To FieldX",
                         style: GoogleFonts.vollkorn(
-                            color: Colors.white, fontSize: 45),
+                            color: Colors.white, fontSize: 25),
                       )),
                   SizedBox(
                     height: height / 400,
@@ -170,7 +170,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                         style: GoogleFonts.vollkorn(
                             color: Colors.white,
                             height: 1.4,
-                            fontSize: 24),
+                            fontSize: 14),
                       )),
 //                  FadeAnimation(1.5, Text("Application..!!",
 //                    style: GoogleFonts.vollkorn(color: Colors.black.withOpacity(.7), height: 1.4, fontSize: 24),)),
@@ -223,8 +223,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                                                                       shape:
                                                                       BoxShape
                                                                           .circle,
-                                                                      color: Colors
-                                                                          .redAccent),
+                                                                      color: kPrimaryColorx),
                                                                   child: hideIcon ==
                                                                       false
                                                                       ? Icon(
@@ -264,7 +263,7 @@ class PageTransition extends PageRouteBuilder {
   PageTransition(this.page)
       : super(
     pageBuilder: (context, animation, anotherAnimation) => page,
-    transitionDuration: Duration(milliseconds: 2000),
+    transitionDuration: Duration(milliseconds: 1000),
     transitionsBuilder: (context, animation, anotherAnimation, child) {
       animation = CurvedAnimation(
         curve: Curves.fastOutSlowIn,

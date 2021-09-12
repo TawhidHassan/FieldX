@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
 
 import 'package:fieldx/Bloc/User/user_cubit.dart';
+import 'package:fieldx/Constants/Colors/constants.dart';
 import 'package:fieldx/Constants/Strings/appStrings.dart';
 import 'package:fieldx/Presentation/Background/background.dart';
 import 'package:fieldx/Presentation/Page/MainScreen.dart';
@@ -106,17 +107,20 @@ class _LoginPageState extends State<LoginPage> {
                   NormalInputField(controller:emilController ,hintText: "Enter Your Email",icon: Icons.alternate_email,),
                   SizedBox(height: 10,),
                   PasswordTextField(label: "Password",controller: passwordController,),
-                  ProgressAnimatedButton(text: "Login",colors: Colors.redAccent,progressButtonState: progressButtonState,tap: (){
-                    if (_globalkey.currentState.validate()) {
-                      setState(() {
-                        validate = true;
-                        progressButtonState = ButtonState.inProgress;
-                      });
-                      BlocProvider.of<UserCubit>(context).logIn(emilController.text,passwordController.text,"Hp");
+                  Container(
+                    width: 300,
+                    child: ProgressAnimatedButton(text: "Login",colors: kPrimaryColorx,progressButtonState: progressButtonState,tap: (){
+                      if (_globalkey.currentState.validate()) {
+                        setState(() {
+                          validate = true;
+                          progressButtonState = ButtonState.inProgress;
+                        });
+                        BlocProvider.of<UserCubit>(context).logIn(emilController.text,passwordController.text,"Hp");
 
-                    }
+                      }
 
-                  },)
+                    },),
+                  )
 
                 ],
               ),

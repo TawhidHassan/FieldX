@@ -21,26 +21,32 @@ class NormalInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFieldContainer(child: TextFormField(
-      controller: controller,
-      onChanged: onChanged,
-      cursorColor: kPrimaryColor,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your Id or Email';
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        icon: Icon(
-          icon,
-          color: Colors.white,
-        ),
-        hintText: hintText,
-        hintStyle: TextStyle(color: Colors.white),
-        border: InputBorder.none,
-        errorStyle: TextStyle(color: Colors.white),
-      ),
-    ));
+    return TextFieldContainer(
+        child: TextFormField(
+            style: TextStyle(color: Colors.white),
+          controller: controller,
+          onChanged: onChanged,
+          cursorColor: Colors.white,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your Id or Email';
+            }
+            return null;
+          },
+          decoration: InputDecoration(
+
+            fillColor: kPrimaryColorx,
+            filled: true,
+            icon: Icon(
+              icon,
+              color: Colors.white,
+            ),
+            hintText: hintText,
+            hintStyle: TextStyle(color: Colors.white),
+            border: InputBorder.none,
+            errorStyle: TextStyle(color: Colors.white),
+          ),
+        )
+    );
   }
 }
